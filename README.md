@@ -235,10 +235,6 @@ copiado, distribuído ou modificado sem autorização expressa.
 
 ---
 
-<p align="center">
-  <a href="https://github.com/optdinho/dinhoopt">🏠 Home</a> •
-  <a href="https://github.com/optdinho/dinhoopt-releases/releases">📦 Releases</a> •
-  <a href="https://github.com/optdinho/dinhoopt/issues">🐛 Reportar Bug</a>
 </p>
 
 <p align="center">
