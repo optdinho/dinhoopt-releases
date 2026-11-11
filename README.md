@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versão-2\.1\.13-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Versão" />
+  <img src="https://img.shields.io/badge/versão-2\.1\.14-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Versão" />
   <img src="https://img.shields.io/badge/plataforma-Windows%2010%2F11-22c55e?style=for-the-badge&logo=windows11&logoColor=white" alt="Plataforma" />
   <img src="https://img.shields.io/badge/build-passing-22c55e?style=for-the-badge&logo=githubactions&logoColor=white" alt="Build" />
   <img src="https://img.shields.io/badge/coverage-95.8%25-22c55e?style=for-the-badge&logo=vitest&logoColor=white" alt="Coverage" />
@@ -31,7 +31,7 @@
 
 <p align="center">
   <a href="https://github.com/optdinho/dinhoopt-releases/releases/latest">
-    <img src="https://img.shields.io/badge/Baixar-DiNho_Optimizer_2\.1\.13-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Download" />
+    <img src="https://img.shields.io/badge/Baixar-DiNho_Optimizer_2\.1\.14-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Download" />
   </a>
 </p>
 
@@ -49,6 +49,29 @@
 > Histórico completo das versões anteriores em **[Todas as versões](https://github.com/optdinho/dinhoopt-releases/releases)**.
 
 <!-- novidades:start -->
+
+### 2\.1\.14
+
+**🎚️ Qualidade e FPS valem na hora.** Mudar a qualidade (CQ, bitrate, preset) ou o FPS nas
+configurações passa a ter efeito imediato, **mesmo a gravar** — antes só valia depois de parar e
+voltar a gravar. A captura e o buffer de replay não são interrompidos e a linha temporal do clipe
+continua contínua. A **resolução** e o **codec** entram na gravação seguinte, porque o clipe é
+guardado sem re-encode e um ficheiro com dois formatos sairia corrompido.
+
+**🖱️ Captura mais resistente (e menos lag fora do jogo).** O Windows Graphics Capture deixa de ficar
+bloqueado para o resto da sessão por causa de **uma** janela protegida ou de uma falha transitória de
+driver, e volta a funcionar em Windows 10 1809–1909. Isso reduz as sessões que caem para a duplicação
+de ecrã do DXGI — o caminho que tira o desktop do modo de composição otimizado e o suspeito conhecido
+de lag no cursor e noutras janelas. A causa do lag reportado **continua por confirmar**; esta versão
+instrumenta-a.
+
+**🔎 Diagnóstico legível.** Quando a captura cai para o DXGI, o log passa a dizer o motivo exato
+(código de erro com nome, build do Windows, sessão local ou remota, HAGS, serviço Frame Server) e a
+barra de estado mostra o backend em uso.
+
+**⚡ Arranque mais direto em placas NVIDIA sem AV1.** A escolha do codificador passa a usar o hardware
+real da GPU em vez da lista de codificadores do ffmpeg, acabando com a tentativa falhada de
+`av1_nvenc` a cada arranque (RTX 30 e anteriores).
 
 ### 2\.1\.13
 
@@ -92,12 +115,6 @@ import dinâmico e testes sem avisos de `act(...)`.
 
 **🌐 Site.** A página de download passa a ler a versão e os assets diretamente do GitHub —
 não precisa de edição a cada release — e o botão **BAIXAR** fica fixo no topo, incluindo em mobile.
-
-### 2\.1\.9
-
-**🎬 Clips mais limpos.** As ações do card passam a ser só ícones — Abrir, Editar, Publicar,
-Renomear, Link e Excluir — todos centrados e lado a lado, sem o menu `⋮`. Os contadores dos
-filtros deixam de partir o rótulo: `7 Dias` e o número ficam sempre na mesma linha.
 
 <!-- novidades:end -->
 
