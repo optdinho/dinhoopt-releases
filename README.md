@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versão-2\.1\.14-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Versão" />
+  <img src="https://img.shields.io/badge/versão-2\.1\.15-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Versão" />
   <img src="https://img.shields.io/badge/plataforma-Windows%2010%2F11-22c55e?style=for-the-badge&logo=windows11&logoColor=white" alt="Plataforma" />
   <img src="https://img.shields.io/badge/build-passing-22c55e?style=for-the-badge&logo=githubactions&logoColor=white" alt="Build" />
   <img src="https://img.shields.io/badge/coverage-95.8%25-22c55e?style=for-the-badge&logo=vitest&logoColor=white" alt="Coverage" />
@@ -31,7 +31,7 @@
 
 <p align="center">
   <a href="https://github.com/optdinho/dinhoopt-releases/releases/latest">
-    <img src="https://img.shields.io/badge/Baixar-DiNho_Optimizer_2\.1\.14-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Download" />
+    <img src="https://img.shields.io/badge/Baixar-DiNho_Optimizer_2\.1\.15-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Download" />
   </a>
 </p>
 
@@ -49,6 +49,21 @@
 > Histórico completo das versões anteriores em **[Todas as versões](https://github.com/optdinho/dinhoopt-releases/releases)**.
 
 <!-- novidades:start -->
+
+### 2\.1\.15
+
+### Adicionado
+- **Privacidade — borda amarela de captura**: novo interruptor no Escudo de Privacidade permite autorizar ou negar a captura sem borda do Windows, incluindo o gravador de clips do DiNho. A permissão é **global** e desativa um indicador de privacidade do Windows para todas as aplicações; a interface avisa disso e a alteração é revertida se alguma escrita falhar. Pode ser necessário iniciar uma nova gravação para que a alteração se aplique.
+- **Clips — frames perdidos**: enquanto grava, a barra de estado mostra uma pílula âmbar com o número de frames perdidos. O indicador só aparece durante a captura (um valor antigo de uma sessão terminada não engana) e o tooltip explica que o clip exportado mantém a duração real.
+
+### Corrigido
+- **Exportação de clips — velocidade**: os buracos curtos de frames deixaram de ser apagados da linha temporal. O limite que separa "perda de frames" de "interrupção" passou de 50 ms para 2 s; assim, quedas por contenção de GPU mantêm o tempo decorrido (com imagem congelada no salto) em vez de fazer o clip tocar até **1,64×** mais rápido e o áudio ficar truncado. Quando a diferença entre duração esperada e duração ativa ultrapassa `max(1 s, 2%)`, o log passa a avisar com o fator e os segundos envolvidos.
+- **Modo de Jogo — HAGS**: o estado deixou de ser mostrado como "ligado" quando a chave do registo não existe ou não pode ser lida (caso típico de Windows 10 nunca configurado); passa a aparecer **"Estado desconhecido"**. O primeiro clique a partir desse estado continua a ativar o HAGS. Foi também removida a nota que dizia que o HAGS melhorava a compatibilidade com capturas/encoders (OBS) — o HAGS não interfere com o WGC nem com o DXGI.
+- **Gargalo do feed**: a mensagem "encoder não é o gargalo" deixou de ser dada quando a leitura era inconclusiva; a janela passa a ser classificada como sustentada, limitada pela conversão, limitada pela fonte ou desconhecida a partir de `fps`, espera e conversão. Os limiares foram calibrados com 559 janelas reais, em vez de retas arbitrárias.
+
+### Alterado
+- **Atualização tecnológica**: Electron 45.5, Vite 8.3, TypeScript 7.0, React 19.3, Biome 2.6.9, i18next 27 + react-i18next 18, YARA-X 0.13, NAudio 3.3, CsWin32 0.3.371 e xunit.v3 4.0.3 (runner Microsoft.Testing.Platform), além das restantes dependências npm e NuGet. O **ffmpeg embarcado passa para a versão 9.1** e continua a ser o *full build* — a decisão de não o reduzir mantém-se.
+- **Log do motor**: por omissão só são escritas mensagens de nível Info ou superior. As linhas Debug (cerca de 78% do log de uma sessão) deixam de aparecer, sem alterar avisos, erros ou o caminho crítico de flush. Para diagnóstico, a variável `DINHO_CLIPS_LOG_LEVEL` permite escolher outro nível sem recompilar.
 
 ### 2\.1\.14
 
@@ -103,18 +118,6 @@ screenshot ou controlar o microfone — sozinho ou com `Ctrl`/`Alt`/`Shift`, por
 **📅 Licença sem surpresas.** O separador de ativação mostra quantos dias faltam e a data
 exacta de expiração, com aviso verde, âmbar ou vermelho. Licenças permanentes mostram
 "Licença vitalícia".
-
-### 2\.1\.10
-
-**🔐 Base atualizada.** Electron 45.2.3 traz os backports de segurança e estabilidade mais
-recentes de Chromium, V8, Skia e PDFium. O framer-motion 14.9.1 corrige animações de saída
-que podiam ficar presas em diálogos e em cards com `layoutId`.
-
-**🧪 Qualidade.** Vitest 5.1, Playwright 1.65, Biome 2.6.5 e jsdom 31; build sem avisos de
-import dinâmico e testes sem avisos de `act(...)`.
-
-**🌐 Site.** A página de download passa a ler a versão e os assets diretamente do GitHub —
-não precisa de edição a cada release — e o botão **BAIXAR** fica fixo no topo, incluindo em mobile.
 
 <!-- novidades:end -->
 
